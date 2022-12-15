@@ -92,21 +92,14 @@ unsigned int multithreaded_xor(unsigned int no_of_elements, struct thread_data t
 
 int main(int argc, char *argv[])
 {
-    unsigned int block_size = 0, block_count = 0;
+    unsigned int block_size = 0, block_count = 0, size=0;
     bool read_mode = false, write_mode = false;
     double start, end;
     string file_name = "";
     struct thread_data td[num_threads];
 
-    // for (int i = 0; i < argc; i++)
-    // {
-    //     cout<<"arg--'"<<argv[i]<<"'"<<endl;
-    // }
-
     if (argc != 5)
-    {
         perror("Too few arguments!");
-    }
 
     else
     {
@@ -118,35 +111,29 @@ int main(int argc, char *argv[])
         block_count = (unsigned int)stoi(argv[4]);
         // cout<<"---"<<block_size<<"--"<<block_count<<endl;
     }
-    // cout<<"flag--"<<read_mode<<" "<<write_mode<<endl;
 
     srandom(time(NULL));
-    unsigned int size = block_count * block_size;
+    size = block_count * block_size;
 
     if (read_mode)
     {
-        start = now();
-        unsigned int no_of_blocks_elapsed = 0;
+        unsigned int no_of_blocks_elapsed = 0, final_xor = 0;
         unsigned int no_of_elements = (unsigned int)(block_size / sizeof(int));
         buf = (unsigned int *)malloc(no_of_elements * sizeof(int));
         // cout<<no_of_elements<<" ----- "<<size<<" ----- "<<sizeof(buf)<<"-----"<<(no_of_elements * sizeof( unsigned int))<<endl;
+        // memset(buf,0,no_of_elements*sizeof(int));
+        
+        start = now();
         ifstream object;
         object.open(file_name, ios::binary);
         if (object.fail())
-        {
             cout << "Can't read file " << file_name;
-        }
         else
         {
-            // memset(buf,0,no_of_elements*sizeof(int));
-            unsigned int final_xor = 0;
             cout << "Reading " << file_name << " in chunks of " << block_size << " ..... " << endl;
-            // cout<<"buf4-----"<<buf[4]<<endl;
             threads = (pthread_t *)malloc(sizeof(pthread_t) * num_threads);
             if (!threads)
-            {
                 perror("out of memory for threads!");
-            }
 
             while (object.read((char *)buf, block_size))
             {

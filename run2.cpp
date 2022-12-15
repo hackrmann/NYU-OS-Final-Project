@@ -67,7 +67,6 @@ void *xorbuf(void *arg)
 unsigned int multithreaded_xor(unsigned int no_of_elements, struct thread_data td[])
 {
     unsigned int final_xor = 0;
-    // struct thread_data td[num_threads];
     for (int i = 0; i < num_threads; i++)
     {
         td[i].size = no_of_elements;
@@ -87,20 +86,13 @@ unsigned int multithreaded_xor(unsigned int no_of_elements, struct thread_data t
 
 int main(int argc, char *argv[])
 {
-    unsigned int block_size = 0, block_count = 0;
+    unsigned int block_size = 0, block_count = 0, final_xor = 0, size = 0;
     double start, end;
     string file_name = "";
     struct thread_data td[num_threads];
 
-    // for (int i = 0; i < argc; i++)
-    // {
-    //     cout<<"arg--'"<<argv[i]<<"'"<<endl;
-    // }
-
     if (argc != 3)
-    {
         perror("Too few arguments!");
-    }
 
     else
     {
@@ -109,29 +101,24 @@ int main(int argc, char *argv[])
     }
 
     srandom(time(NULL));
-    unsigned int size = 0;
 
-    start = now();
     unsigned int no_of_elements = (unsigned int)(block_size / sizeof(int));
     buf = (unsigned int *)malloc(no_of_elements * sizeof(int));
+    // memset(buf,0,no_of_elements*sizeof(int));
     // cout<<no_of_elements<<" ----- "<<size<<" ----- "<<sizeof(buf)<<"-----"<<(no_of_elements * sizeof( unsigned int))<<endl;
+
+    start = now();
     ifstream object;
     object.open(file_name, ios::binary);
     if (object.fail())
-    {
         cout << "Can't read file " << file_name;
-    }
     else
     {
-        // memset(buf,0,no_of_elements*sizeof(int));
-        unsigned int final_xor = 0;
         cout << "Reading " << file_name << " in chunks of " << block_size << " ..... " << endl;
         // cout<<"buf4-----"<<buf[4]<<endl;
         threads = (pthread_t *)malloc(sizeof(pthread_t) * num_threads);
         if (!threads)
-        {
             perror("out of memory for threads!");
-        }
 
         while (object.read((char *)buf, block_size))
         {
@@ -149,6 +136,7 @@ int main(int argc, char *argv[])
         end = now();
         print_performance(size, start, end, block_count, final_xor);
     }
+
     cout << "\n";
     return 0;
 }
