@@ -40,3 +40,19 @@ for file in dir_list:
 # print(experiment)
 json_object = json.dumps(experiment, indent = 4)
 print(json_object)
+
+for i in experiment:
+    try:
+        print(i,"-",experiment[i][0]["size"],"MB")
+        x = experiment[i]
+        block_sizes = [i["block_size"] for i in x]
+        rates = [i["rate"] for i in x]
+        print("block sizes:")
+        for k in block_sizes:
+            print(k)
+        print("rates---")
+        for k in rates:
+            print(k)
+        print("-------------------------")
+    except:
+        pass

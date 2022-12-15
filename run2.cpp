@@ -41,6 +41,7 @@ void print_performance(double size, double start, double end, unsigned int block
 {
     cout << "Number of blocks read: " << block_count << " blocks" << endl;
     cout << "Size of the file read: " << (size / (1024 * 1024)) << " MB" << endl;
+    cout << "Size of the file read in bytes: " << (size) << " B" << endl;
     cout << "Time taken: " << (end - start) << " seconds" << endl;
     cout << "Rate at which file was read: " << get_rate(size, start, end) << "MiB/sec" << endl;
     printf("Xor value is %08x", final_xor);

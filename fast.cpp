@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <fstream>
 #include <string>
 #include <sys/time.h>
@@ -7,8 +8,15 @@
 using namespace std;
 
 int num_threads = 8;
-char *buffer;
 unsigned int *buf;
+pthread_t *threads;
+
+struct thread_data
+{
+    unsigned int thread_id;
+    unsigned int size;
+    unsigned int xor_result;
+};
 
 double now()
 {
@@ -17,16 +25,18 @@ double now()
     return tv.tv_sec + tv.tv_usec / 1000000.0;
 }
 
-struct thread_data
+double get_rate(double size, double start, double end)
 {
-    int thread_id;
-    int size;
-    unsigned int xor_result;
-};
+    return size / ((end - start) * 1024 * 1024);
+}
 
+void print_error(string s)
+{
+    cout << "Error! " << s << endl;
+    exit(EXIT_FAILURE);
+}
 void *xorbuf(void *arg)
 {
-
     struct thread_data *args;
     args = (struct thread_data *)arg;
     long tid = args->thread_id;
@@ -35,63 +45,78 @@ void *xorbuf(void *arg)
     unsigned int result = 0;
     for (int i = tid; i < size; i += num_threads)
     {
+        // if(buf[i]!=0) cout<<buf[i]<<" thread "<<tid<<" "<<i<<endl;
         result ^= buf[i];
     }
     args->xor_result = result;
     pthread_exit(NULL);
 }
+
+unsigned int multithreaded_xor(unsigned int no_of_elements, struct thread_data td[])
+{
+    unsigned int final_xor = 0;
+    for (int i = 0; i < num_threads; i++)
+    {
+        td[i].size = no_of_elements;
+        td[i].thread_id = i;
+        pthread_create(&threads[i], NULL, xorbuf, (void *)&td[i]);
+    }
+    for (int i = 0; i < num_threads; i++)
+    {
+        pthread_join(threads[i], NULL);
+    }
+    for (int i = 0; i < num_threads; i++)
+    {
+        final_xor = final_xor ^ td[i].xor_result;
+    }
+    return final_xor;
+}
+
 int main(int argc, char *argv[])
 {
-    pthread_t *threads;
+    unsigned int block_size = 16777216, final_xor = 0;  //16MB of buffer
+    double start, end;
+    string file_name = "";
     struct thread_data td[num_threads];
-    if(argc!=2)
-    {
-        cout<<"Check your arguments! Must include only filename";
-    }
+
+    if (argc != 2)
+        print_error("Check arguments!");
+
     else
     {
-        int start, end, size=0;
-        string file_name = argv[2];
-        start = now();
-        int no_of_elements = (int)(size / sizeof(int));
-        buf = (unsigned int *)malloc(no_of_elements * sizeof(int));
-        ifstream object;
-        object.open(file_name, ios::binary);
-        if (object.fail())
-        {
-            cout << "Can't read file " << file_name;
-        }
-        else
-        {
-            unsigned int final_xor;
-            cout << "Read " << file_name << endl;
-            object.read((char *)buf, size);
-
-            threads = (pthread_t *)malloc(sizeof(pthread_t) * num_threads);
-            if (!threads)
-            {
-                perror("out of memory for threads!");
-            }
-
-            for (int i = 0; i < num_threads; i++)
-            {
-                td[i].size = no_of_elements;
-                td[i].thread_id = i;
-                pthread_create(&threads[i], NULL, xorbuf, (void *)&td[i]);
-            }
-            for (int i = 0; i < num_threads; i++)
-            {
-                pthread_join(threads[i], NULL);
-            }
-            final_xor = td[0].xor_result;
-            for (int i = 1; i < num_threads; i++)
-            {
-                final_xor = final_xor ^ td[i].xor_result;
-            }
-            end = now();
-            cout << "XOR value: " << final_xor;
-        }
+        file_name = argv[1];
     }
-    cout<<endl;
+
+    srandom(time(NULL));
+
+    unsigned int no_of_elements = (unsigned int)(block_size / sizeof(int));
+    unsigned int size_of_buf = no_of_elements * sizeof(int);
+    buf = (unsigned int *)malloc(size_of_buf);
+    // memset(buf,0,no_of_elements*sizeof(int));
+    start = now();
+    ifstream object;
+    object.open(file_name, ios::binary);
+    if (object.fail())
+        print_error("Cannot read file!");
+    else
+    {
+        threads = (pthread_t *)malloc(sizeof(pthread_t) * num_threads);
+        if (!threads)
+            perror("out of memory for threads!");
+
+        while (object.read((char *)buf, size_of_buf))
+        {
+            final_xor ^= multithreaded_xor(no_of_elements, td);
+        }
+        if (object.gcount() < block_size && object.gcount() > 0)
+        {
+            final_xor ^= multithreaded_xor(object.gcount() / sizeof(unsigned int), td);
+        }
+        end = now();
+        cout << "Time taken: " << (end - start) << " seconds" << endl;
+        printf("Xor value is %08x", final_xor);
+    }
+
+    cout << "\n";
     return 0;
 }

@@ -1,0 +1,87 @@
+thejus@Ubuntu:~/Desktop/OS/final$ ./run read_content/ubuntu-21.04-desktop-amd64.iso -r 20000 150000 ---threads = 1
+Read read_content/ubuntu-21.04-desktop-amd64.iso
+Time taken is 19.1131 seconds
+Rate in MiB/sec is 149.689
+Xor value is a7eeb2d9
+thejus@Ubuntu:~/Desktop/OS/final$ g++ -o run run.cpp
+thejus@Ubuntu:~/Desktop/OS/final$ ./run read_content/ubuntu-21.04-desktop-amd64.iso -r 20000 150000 ---threads = 8
+Read read_content/ubuntu-21.04-desktop-amd64.iso
+Time taken is 3.22173 seconds
+Rate in MiB/sec is 888.039
+Xor value is a7eeb2d9
+
+From slack: XOR value if we read the entire ubuntu-21.04-desktop-amd64.iso file a7eeb2d9.
+
+thejus@Ubuntu:~/Desktop/OS/final$ ./run2 read_content/output-onlinefiletools-62kb.txt 1
+Reading read_content/output-onlinefiletools-62kb.txt in chunks of 1 ..... 
+Number of blocks read: 15872 blocks
+Size of the file read: 0.0605469 MB
+Size of the file read in bytes: 63488 B
+Time taken: 9.14704 seconds
+Rate at which file was read: 0.00661928MiB/sec
+
+--------------------------------------------
+
+thejus@Ubuntu:~/Desktop/OS/final$ ./run2 read_content/ubuntu-21.04-desktop-amd64.iso 200000
+Reading read_content/ubuntu-21.04-desktop-amd64.iso in chunks of 200000 ..... 
+Number of blocks read: 14094 blocks
+Size of the file read: 2688.16 MB
+Time taken: 10.5241 seconds
+Rate at which file was read: 255.429MiB/sec
+Xor value is a7eeb2d9
+
+thejus@Ubuntu:~/Desktop/OS/final$ ./run2 read_content/output-onlinefiletools-32mb.txt 2048
+Reading read_content/output-onlinefiletools-32mb.txt in chunks of 2048 ..... 
+Number of blocks read: 16384 blocks
+Size of the file read: 32 MB
+Time taken: 9.64439 seconds
+Rate at which file was read: 3.31799MiB/sec
+Xor value is 151b0816
+
+thejus@Ubuntu:~/Desktop/OS/final$ ./run2 read_content/output-onlinefiletools-16mb.txt 1024
+Reading read_content/output-onlinefiletools-16mb.txt in chunks of 1024 ..... 
+Number of blocks read: 16384 blocks
+Size of the file read: 16 MB
+Time taken: 9.19287 seconds
+Rate at which file was read: 1.74048MiB/sec
+Xor value is 16160b02
+
+thejus@Ubuntu:~/Desktop/OS/final$ ./run2 read_content/output-onlinefiletools-16mb.txt 1025
+Reading read_content/output-onlinefiletools-16mb.txt in chunks of 1025 ..... 
+Number of blocks read: 16384 blocks
+Size of the file read: 16 MB
+Time taken: 9.2069 seconds
+Rate at which file was read: 1.73783MiB/sec
+Xor value is 16160b02
+
+thejus@Ubuntu:~/Desktop/OS/final$ ./run2 read_content/output-onlinefiletools-8mb.txt 821
+Reading read_content/output-onlinefiletools-8mb.txt in chunks of 821 ..... 
+Number of blocks read: 10231 blocks
+Size of the file read: 8 MB
+Time taken: 6.03619 seconds
+Rate at which file was read: 1.32534MiB/sec
+Xor value is 13051917
+
+thejus@Ubuntu:~/Desktop/OS/final$ ./run2 read_content/output-onlinefiletools-4mb.txt 256
+Reading read_content/output-onlinefiletools-4mb.txt in chunks of 256 ..... 
+Number of blocks read: 16384 blocks
+Size of the file read: 4 MB
+Time taken: 9.34935 seconds
+Rate at which file was read: 0.427837MiB/sec
+Xor value is 140f120f
+
+thejus@Ubuntu:~/Desktop/OS/final$ ./run2 read_content/output-onlinefiletools-4mb.txt 387
+Reading read_content/output-onlinefiletools-4mb.txt in chunks of 387 ..... 
+Number of blocks read: 10923 blocks
+Size of the file read: 4 MB
+Time taken: 5.98771 seconds
+Rate at which file was read: 0.668035MiB/sec
+Xor value is 140f120f
+
+thejus@Ubuntu:~/Desktop/OS/final$ ./run2 read_content/output-onlinefiletools-62kb.txt 1
+Reading read_content/output-onlinefiletools-62kb.txt in chunks of 1 ..... 
+Number of blocks read: 15872 blocks
+Size of the file read: 0.0605469 MB
+Size of the file read in bytes: 63488 B
+Time taken: 9.14704 seconds
+Rate at which file was read: 0.00661928MiB/sec
