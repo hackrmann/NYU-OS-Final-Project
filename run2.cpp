@@ -31,10 +31,10 @@ double get_rate(double size, double start, double end)
     return size / ((end - start) * 1024 * 1024);
 }
 
-void perror(string s)
+void print_error(string s)
 {
     cout << "Error! " << s << endl;
-    exit(0);
+    exit(EXIT_FAILURE);
 }
 
 void print_performance(double size, double start, double end, unsigned int block_count, unsigned int final_xor)
@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
     struct thread_data td[num_threads];
 
     if (argc != 3)
-        perror("Too few arguments!");
+        print_error("Check arguments!");
 
     else
     {
@@ -103,7 +103,8 @@ int main(int argc, char *argv[])
     srandom(time(NULL));
 
     unsigned int no_of_elements = (unsigned int)(block_size / sizeof(int));
-    buf = (unsigned int *)malloc(no_of_elements * sizeof(int));
+    unsigned int size_of_buf = no_of_elements * sizeof(int);
+    buf = (unsigned int *)malloc(size_of_buf);
     // memset(buf,0,no_of_elements*sizeof(int));
     // cout<<no_of_elements<<" ----- "<<size<<" ----- "<<sizeof(buf)<<"-----"<<(no_of_elements * sizeof( unsigned int))<<endl;
 
@@ -111,7 +112,7 @@ int main(int argc, char *argv[])
     ifstream object;
     object.open(file_name, ios::binary);
     if (object.fail())
-        cout << "Can't read file " << file_name;
+        print_error("Cannot read file!");
     else
     {
         cout << "Reading " << file_name << " in chunks of " << block_size << " ..... " << endl;
@@ -120,7 +121,7 @@ int main(int argc, char *argv[])
         if (!threads)
             perror("out of memory for threads!");
 
-        while (object.read((char *)buf, block_size))
+        while (object.read((char *)buf, size_of_buf))
         {
             final_xor ^= multithreaded_xor(no_of_elements, td);
             block_count++;

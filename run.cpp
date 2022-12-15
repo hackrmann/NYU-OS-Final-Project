@@ -117,9 +117,10 @@ int main(int argc, char *argv[])
 
     if (read_mode)
     {
-        unsigned int no_of_blocks_elapsed = 0, final_xor = 0;
+        unsigned int no_of_blocks_elapsed = 0, final_xor = 0, size_of_buf;
         unsigned int no_of_elements = (unsigned int)(block_size / sizeof(int));
-        buf = (unsigned int *)malloc(no_of_elements * sizeof(int));
+        size_of_buf = no_of_elements * sizeof(int);
+        buf = (unsigned int *)malloc(size_of_buf);
         // cout<<no_of_elements<<" ----- "<<size<<" ----- "<<sizeof(buf)<<"-----"<<(no_of_elements * sizeof( unsigned int))<<endl;
         // memset(buf,0,no_of_elements*sizeof(int));
         
@@ -135,7 +136,7 @@ int main(int argc, char *argv[])
             if (!threads)
                 perror("out of memory for threads!");
 
-            while (object.read((char *)buf, block_size))
+            while (object.read((char *)buf, size_of_buf))
             {
                 final_xor ^= multithreaded_xor(no_of_elements, td);
                 if (block_size * ++no_of_blocks_elapsed >= size)
