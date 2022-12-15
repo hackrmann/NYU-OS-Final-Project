@@ -1,0 +1,39 @@
+block_size = 20000 for read_content/ubuntu-21.04-desktop-amd64.iso
+Reading read_content/ubuntu-21.04-desktop-amd64.iso in chunks of 20000 ..... 
+Number of blocks read: 140937 blocks
+Size of the file read: 2688.16 MB
+Time taken: 89.2754 seconds
+Rate at which file was read: 30.1109MiB/sec
+Xor value is a7eeb2d9
+----------
+block_size = 40000 for read_content/ubuntu-21.04-desktop-amd64.iso
+Reading read_content/ubuntu-21.04-desktop-amd64.iso in chunks of 40000 ..... 
+Number of blocks read: 70469 blocks
+Size of the file read: 2688.16 MB
+Time taken: 49.0063 seconds
+Rate at which file was read: 54.8533MiB/sec
+Xor value is a7eeb2d9
+----------
+block_size = 80000 for read_content/ubuntu-21.04-desktop-amd64.iso
+Reading read_content/ubuntu-21.04-desktop-amd64.iso in chunks of 80000 ..... 
+Number of blocks read: 35235 blocks
+Size of the file read: 2688.16 MB
+Time taken: 29.059 seconds
+Rate at which file was read: 92.5068MiB/sec
+Xor value is a7eeb2d9
+----------
+block_size = 120000 for read_content/ubuntu-21.04-desktop-amd64.iso
+Reading read_content/ubuntu-21.04-desktop-amd64.iso in chunks of 120000 ..... 
+Number of blocks read: 23490 blocks
+Size of the file read: 2688.16 MB
+Time taken: 22.2174 seconds
+Rate at which file was read: 120.994MiB/sec
+Xor value is a7eeb2d9
+----------
+block_size = 200000 for read_content/ubuntu-21.04-desktop-amd64.iso
+Reading read_content/ubuntu-21.04-desktop-amd64.iso in chunks of 200000 ..... 
+Number of blocks read: 14094 blocks
+Size of the file read: 2688.16 MB
+Time taken: 13.7979 seconds
+Rate at which file was read: 194.823MiB/sec
+Xor value is a7eeb2d9

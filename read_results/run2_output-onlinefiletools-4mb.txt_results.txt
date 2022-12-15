@@ -1,0 +1,64 @@
+block_size = 60 for read_content/output-onlinefiletools-4mb.txt
+Reading read_content/output-onlinefiletools-4mb.txt in chunks of 60 ..... 
+Number of blocks read: 69906 blocks
+Size of the file read: 4 MB
+Time taken: 39.318 seconds
+Rate at which file was read: 0.101735MiB/sec
+Xor value is 140f120f
+----------
+block_size = 100 for read_content/output-onlinefiletools-4mb.txt
+Reading read_content/output-onlinefiletools-4mb.txt in chunks of 100 ..... 
+Number of blocks read: 41944 blocks
+Size of the file read: 4 MB
+Time taken: 23.0678 seconds
+Rate at which file was read: 0.173402MiB/sec
+Xor value is 140f120f
+----------
+block_size = 300 for read_content/output-onlinefiletools-4mb.txt
+Reading read_content/output-onlinefiletools-4mb.txt in chunks of 300 ..... 
+Number of blocks read: 13982 blocks
+Size of the file read: 4 MB
+Time taken: 7.96487 seconds
+Rate at which file was read: 0.502205MiB/sec
+Xor value is 140f120f
+----------
+block_size = 1000 for read_content/output-onlinefiletools-4mb.txt
+Reading read_content/output-onlinefiletools-4mb.txt in chunks of 1000 ..... 
+Number of blocks read: 4195 blocks
+Size of the file read: 4 MB
+Time taken: 2.36059 seconds
+Rate at which file was read: 1.69449MiB/sec
+Xor value is 140f120f
+----------
+block_size = 2000 for read_content/output-onlinefiletools-4mb.txt
+Reading read_content/output-onlinefiletools-4mb.txt in chunks of 2000 ..... 
+Number of blocks read: 2098 blocks
+Size of the file read: 4 MB
+Time taken: 1.23203 seconds
+Rate at which file was read: 3.24666MiB/sec
+Xor value is 140f120f
+----------
+block_size = 4000 for read_content/output-onlinefiletools-4mb.txt
+Reading read_content/output-onlinefiletools-4mb.txt in chunks of 4000 ..... 
+Number of blocks read: 1049 blocks
+Size of the file read: 4 MB
+Time taken: 0.637018 seconds
+Rate at which file was read: 6.27926MiB/sec
+Xor value is 140f120f
+----------
+block_size = 8000 for read_content/output-onlinefiletools-4mb.txt
+Reading read_content/output-onlinefiletools-4mb.txt in chunks of 8000 ..... 
+Number of blocks read: 525 blocks
+Size of the file read: 4 MB
+Time taken: 0.441059 seconds
+Rate at which file was read: 9.06908MiB/sec
+Xor value is 140f120f
+----------
+block_size = 20000 for read_content/output-onlinefiletools-4mb.txt
+Reading read_content/output-onlinefiletools-4mb.txt in chunks of 20000 ..... 
+Number of blocks read: 210 blocks
+Size of the file read: 4 MB
+Time taken: 0.599881 seconds
+Rate at which file was read: 6.66799MiB/sec
+Xor value is 140f120f
+----------

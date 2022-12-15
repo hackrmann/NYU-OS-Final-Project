@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
 
     srandom(time(NULL));
 
-    unsigned int no_of_elements = (unsigned int)(block_size / sizeof(int));
+    unsigned int no_of_elements = (unsigned int)(block_size / sizeof(int) + block_size % sizeof(int));
     unsigned int size_of_buf = no_of_elements * sizeof(int);
     buf = (unsigned int *)malloc(size_of_buf);
     // memset(buf,0,no_of_elements*sizeof(int));

@@ -1,0 +1,56 @@
+block_size = 1000 for read_content/output-onlinefiletools-32mb.txt
+Reading read_content/output-onlinefiletools-32mb.txt in chunks of 1000 ..... 
+Number of blocks read: 33555 blocks
+Size of the file read: 32 MB
+Time taken: 18.8818 seconds
+Rate at which file was read: 1.69476MiB/sec
+Xor value is 151b0816
+----------
+block_size = 1500 for read_content/output-onlinefiletools-32mb.txt
+Reading read_content/output-onlinefiletools-32mb.txt in chunks of 1500 ..... 
+Number of blocks read: 22370 blocks
+Size of the file read: 32 MB
+Time taken: 12.7772 seconds
+Rate at which file was read: 2.50447MiB/sec
+Xor value is 151b0816
+----------
+block_size = 2000 for read_content/output-onlinefiletools-32mb.txt
+Reading read_content/output-onlinefiletools-32mb.txt in chunks of 2000 ..... 
+Number of blocks read: 16778 blocks
+Size of the file read: 32 MB
+Time taken: 9.23905 seconds
+Rate at which file was read: 3.46356MiB/sec
+Xor value is 151b0816
+----------
+block_size = 4096 for read_content/output-onlinefiletools-32mb.txt
+Reading read_content/output-onlinefiletools-32mb.txt in chunks of 4096 ..... 
+Number of blocks read: 8192 blocks
+Size of the file read: 32 MB
+Time taken: 4.79802 seconds
+Rate at which file was read: 6.66941MiB/sec
+Xor value is 151b0816
+----------
+block_size = 8000 for read_content/output-onlinefiletools-32mb.txt
+Reading read_content/output-onlinefiletools-32mb.txt in chunks of 8000 ..... 
+Number of blocks read: 4195 blocks
+Size of the file read: 32 MB
+Time taken: 2.40427 seconds
+Rate at which file was read: 13.3097MiB/sec
+Xor value is 151b0816
+----------
+block_size = 20000 for read_content/output-onlinefiletools-32mb.txt
+Reading read_content/output-onlinefiletools-32mb.txt in chunks of 20000 ..... 
+Number of blocks read: 1678 blocks
+Size of the file read: 32 MB
+Time taken: 0.96067 seconds
+Rate at which file was read: 33.3101MiB/sec
+Xor value is 151b0816
+----------
+block_size = 40000 for read_content/output-onlinefiletools-32mb.txt
+Reading read_content/output-onlinefiletools-32mb.txt in chunks of 40000 ..... 
+Number of blocks read: 839 blocks
+Size of the file read: 32 MB
+Time taken: 0.513261 seconds
+Rate at which file was read: 62.3464MiB/sec
+Xor value is 151b0816
+----------

@@ -1,0 +1,48 @@
+block_size = 680 for read_content/output-onlinefiletools-16mb.txt
+Reading read_content/output-onlinefiletools-16mb.txt in chunks of 680 ..... 
+Number of blocks read: 24673 blocks
+Size of the file read: 16 MB
+Time taken: 15.5424 seconds
+Rate at which file was read: 1.02944MiB/sec
+Xor value is 16160b02
+----------
+block_size = 1000 for read_content/output-onlinefiletools-16mb.txt
+Reading read_content/output-onlinefiletools-16mb.txt in chunks of 1000 ..... 
+Number of blocks read: 16778 blocks
+Size of the file read: 16 MB
+Time taken: 10.585 seconds
+Rate at which file was read: 1.51158MiB/sec
+Xor value is 16160b02
+----------
+block_size = 2000 for read_content/output-onlinefiletools-16mb.txt
+Reading read_content/output-onlinefiletools-16mb.txt in chunks of 2000 ..... 
+Number of blocks read: 8389 blocks
+Size of the file read: 16 MB
+Time taken: 6.26175 seconds
+Rate at which file was read: 2.5552MiB/sec
+Xor value is 16160b02
+----------
+block_size = 4096 for read_content/output-onlinefiletools-16mb.txt
+Reading read_content/output-onlinefiletools-16mb.txt in chunks of 4096 ..... 
+Number of blocks read: 4096 blocks
+Size of the file read: 16 MB
+Time taken: 2.46501 seconds
+Rate at which file was read: 6.49084MiB/sec
+Xor value is 16160b02
+----------
+block_size = 8000 for read_content/output-onlinefiletools-16mb.txt
+Reading read_content/output-onlinefiletools-16mb.txt in chunks of 8000 ..... 
+Number of blocks read: 2098 blocks
+Size of the file read: 16 MB
+Time taken: 1.23321 seconds
+Rate at which file was read: 12.9742MiB/sec
+Xor value is 16160b02
+----------
+block_size = 20000 for read_content/output-onlinefiletools-16mb.txt
+Reading read_content/output-onlinefiletools-16mb.txt in chunks of 20000 ..... 
+Number of blocks read: 839 blocks
+Size of the file read: 16 MB
+Time taken: 1.01342 seconds
+Rate at which file was read: 15.7881MiB/sec
+Xor value is 16160b02
+----------

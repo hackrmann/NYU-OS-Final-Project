@@ -1,0 +1,56 @@
+block_size = 300 for read_content/output-onlinefiletools-8mb.txt
+Reading read_content/output-onlinefiletools-8mb.txt in chunks of 300 ..... 
+Number of blocks read: 27963 blocks
+Size of the file read: 8 MB
+Time taken: 15.8611 seconds
+Rate at which file was read: 0.504379MiB/sec
+Xor value is 13051917
+----------
+block_size = 512 for read_content/output-onlinefiletools-8mb.txt
+Reading read_content/output-onlinefiletools-8mb.txt in chunks of 512 ..... 
+Number of blocks read: 16384 blocks
+Size of the file read: 8 MB
+Time taken: 9.52248 seconds
+Rate at which file was read: 0.840117MiB/sec
+Xor value is 13051917
+----------
+block_size = 1000 for read_content/output-onlinefiletools-8mb.txt
+Reading read_content/output-onlinefiletools-8mb.txt in chunks of 1000 ..... 
+Number of blocks read: 8389 blocks
+Size of the file read: 8 MB
+Time taken: 4.7517 seconds
+Rate at which file was read: 1.68361MiB/sec
+Xor value is 13051917
+----------
+block_size = 2000 for read_content/output-onlinefiletools-8mb.txt
+Reading read_content/output-onlinefiletools-8mb.txt in chunks of 2000 ..... 
+Number of blocks read: 4195 blocks
+Size of the file read: 8 MB
+Time taken: 2.38592 seconds
+Rate at which file was read: 3.35301MiB/sec
+Xor value is 13051917
+----------
+block_size = 4096 for read_content/output-onlinefiletools-8mb.txt
+Reading read_content/output-onlinefiletools-8mb.txt in chunks of 4096 ..... 
+Number of blocks read: 2048 blocks
+Size of the file read: 8 MB
+Time taken: 1.14005 seconds
+Rate at which file was read: 7.01725MiB/sec
+Xor value is 13051917
+----------
+block_size = 8000 for read_content/output-onlinefiletools-8mb.txt
+Reading read_content/output-onlinefiletools-8mb.txt in chunks of 8000 ..... 
+Number of blocks read: 1049 blocks
+Size of the file read: 8 MB
+Time taken: 0.595691 seconds
+Rate at which file was read: 13.4298MiB/sec
+Xor value is 13051917
+----------
+block_size = 20000 for read_content/output-onlinefiletools-8mb.txt
+Reading read_content/output-onlinefiletools-8mb.txt in chunks of 20000 ..... 
+Number of blocks read: 420 blocks
+Size of the file read: 8 MB
+Time taken: 0.24269 seconds
+Rate at which file was read: 32.9639MiB/sec
+Xor value is 13051917
+----------

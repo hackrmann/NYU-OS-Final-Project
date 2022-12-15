@@ -1,0 +1,32 @@
+block_size = 20000 for read_content/android-studio.zip
+Reading read_content/android-studio.zip in chunks of 20000 ..... 
+Number of blocks read: 48379 blocks
+Size of the file read: 922.747 MB
+Time taken: 37.6156 seconds
+Rate at which file was read: 24.531MiB/sec
+Xor value is 2057f596
+----------
+block_size = 40000 for read_content/android-studio.zip
+Reading read_content/android-studio.zip in chunks of 40000 ..... 
+Number of blocks read: 24190 blocks
+Size of the file read: 922.747 MB
+Time taken: 15.251 seconds
+Rate at which file was read: 60.504MiB/sec
+Xor value is 2057f596
+----------
+block_size = 80000 for read_content/android-studio.zip
+Reading read_content/android-studio.zip in chunks of 80000 ..... 
+Number of blocks read: 12095 blocks
+Size of the file read: 922.747 MB
+Time taken: 7.2975 seconds
+Rate at which file was read: 126.447MiB/sec
+Xor value is 2057f596
+----------
+block_size = 120000 for read_content/android-studio.zip
+Reading read_content/android-studio.zip in chunks of 120000 ..... 
+Number of blocks read: 8064 blocks
+Size of the file read: 922.747 MB
+Time taken: 5.13987 seconds
+Rate at which file was read: 179.527MiB/sec
+Xor value is 2057f596
+----------

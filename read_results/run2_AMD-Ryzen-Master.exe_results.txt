@@ -1,0 +1,48 @@
+block_size = 2000 for read_content/AMD-Ryzen-Master.exe
+Reading read_content/AMD-Ryzen-Master.exe in chunks of 2000 ..... 
+Number of blocks read: 70676 blocks
+Size of the file read: 134.803 MB
+Time taken: 40.8786 seconds
+Rate at which file was read: 3.29764MiB/sec
+Xor value is bd04acc9
+----------
+block_size = 4096 for read_content/AMD-Ryzen-Master.exe
+Reading read_content/AMD-Ryzen-Master.exe in chunks of 4096 ..... 
+Number of blocks read: 34510 blocks
+Size of the file read: 134.803 MB
+Time taken: 19.1704 seconds
+Rate at which file was read: 7.03181MiB/sec
+Xor value is bd04acc9
+----------
+block_size = 8000 for read_content/AMD-Ryzen-Master.exe
+Reading read_content/AMD-Ryzen-Master.exe in chunks of 8000 ..... 
+Number of blocks read: 17669 blocks
+Size of the file read: 134.803 MB
+Time taken: 10.0966 seconds
+Rate at which file was read: 13.3513MiB/sec
+Xor value is bd04acc9
+----------
+block_size = 20000 for read_content/AMD-Ryzen-Master.exe
+Reading read_content/AMD-Ryzen-Master.exe in chunks of 20000 ..... 
+Number of blocks read: 7068 blocks
+Size of the file read: 134.803 MB
+Time taken: 4.18798 seconds
+Rate at which file was read: 32.188MiB/sec
+Xor value is bd04acc9
+----------
+block_size = 40000 for read_content/AMD-Ryzen-Master.exe
+Reading read_content/AMD-Ryzen-Master.exe in chunks of 40000 ..... 
+Number of blocks read: 3534 blocks
+Size of the file read: 134.803 MB
+Time taken: 2.07476 seconds
+Rate at which file was read: 64.9727MiB/sec
+Xor value is bd04acc9
+----------
+block_size = 80000 for read_content/AMD-Ryzen-Master.exe
+Reading read_content/AMD-Ryzen-Master.exe in chunks of 80000 ..... 
+Number of blocks read: 1767 blocks
+Size of the file read: 134.803 MB
+Time taken: 1.09926 seconds
+Rate at which file was read: 122.63MiB/sec
+Xor value is bd04acc9
+----------

@@ -118,7 +118,7 @@ int main(int argc, char *argv[])
     if (read_mode)
     {
         unsigned int no_of_blocks_elapsed = 0, final_xor = 0, size_of_buf;
-        unsigned int no_of_elements = (unsigned int)(block_size / sizeof(int));
+        unsigned int no_of_elements = (unsigned int)(block_size / sizeof(int) + block_size % sizeof(int));
         size_of_buf = no_of_elements * sizeof(int);
         buf = (unsigned int *)malloc(size_of_buf);
         // cout<<no_of_elements<<" ----- "<<size<<" ----- "<<sizeof(buf)<<"-----"<<(no_of_elements * sizeof( unsigned int))<<endl;
