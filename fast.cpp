@@ -13,7 +13,7 @@ pthread_t *threads;
 
 struct thread_data
 {
-    unsigned int thread_id;
+    unsigned int thread_id; 
     unsigned int size;
     unsigned int xor_result;
 };
