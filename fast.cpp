@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int num_threads = 8;
+int num_threads = 4;
 unsigned int *buf;
 pthread_t *threads;
 
@@ -50,6 +50,7 @@ void *xorbuf(void *arg)
     }
     args->xor_result = result;
     pthread_exit(NULL);
+    return NULL;
 }
 
 unsigned int multithreaded_xor(unsigned int no_of_elements, struct thread_data td[])
@@ -87,7 +88,7 @@ int main(int argc, char *argv[])
         file_name = argv[1];
     }
 
-    srandom(time(NULL));
+    srand(time(NULL));
 
     unsigned int no_of_elements = (unsigned int)(block_size / sizeof(int));
     unsigned int size_of_buf = no_of_elements * sizeof(int);
@@ -113,7 +114,8 @@ int main(int argc, char *argv[])
             final_xor ^= multithreaded_xor(object.gcount() / sizeof(unsigned int), td);
         }
         end = now();
-        cout << "Time taken: " << (end - start) << " seconds" << endl;
+        cout << "Time taken: " << (end - start) << " seconds" << endl << 
+                "Block size: " << block_size << " bytes" << endl;
         printf("Xor value is %08x", final_xor);
     }
 

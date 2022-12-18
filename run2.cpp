@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int num_threads = 8;
+int num_threads = 4;
 char *buffer;
 unsigned int *buf;
 pthread_t *threads;
