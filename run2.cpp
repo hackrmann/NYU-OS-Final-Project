@@ -37,11 +37,17 @@ void print_error(string s)
     exit(EXIT_FAILURE);
 }
 
-void print_performance(double size, double start, double end, unsigned int block_count, unsigned int final_xor)
+void print_performance(double size, double start, double end, unsigned int block_count, unsigned int final_xor, int flag)
 {
-    cout << "Number of blocks read: " << block_count << " blocks" << endl;
-    cout << "Size of the file read: " << (size / (1024 * 1024)) << " MB" << endl;
-    cout << "Size of the file read in bytes: " << (size) << " B" << endl;
+    cout << "Number of blocks read: " << block_count << " blocks";
+    if (flag == 1)
+    {
+        cout << " (file not fully read, program exceeded time limit of 15s and was terminated)";
+    }
+    cout << endl;
+    cout << "Size read: " << (size / (1024 * 1024)) << " MB" << endl;
+    // cout << "Size of the file read in bytes (Number of system calls): " << (size) << " B" << endl;
+    // cout << "Number of system calls per second: " << (size/(end-start)) << " B/sec" << endl;
     cout << "Time taken: " << (end - start) << " seconds" << endl;
     cout << "Rate at which file was read: " << get_rate(size, start, end) << "MiB/sec" << endl;
     printf("Xor value is %08x", final_xor);
@@ -103,8 +109,9 @@ int main(int argc, char *argv[])
 
     srandom(time(NULL));
 
-    unsigned int no_of_elements = (unsigned int)(block_size / sizeof(int) + block_size % sizeof(int));
+    unsigned int no_of_elements = (unsigned int)((block_size + sizeof(int) - 1) / sizeof(int));
     unsigned int size_of_buf = no_of_elements * sizeof(int);
+    int flag = 0;
     buf = (unsigned int *)malloc(size_of_buf);
     // memset(buf,0,no_of_elements*sizeof(int));
     // cout<<no_of_elements<<" ----- "<<size<<" ----- "<<sizeof(buf)<<"-----"<<(no_of_elements * sizeof( unsigned int))<<endl;
@@ -127,8 +134,14 @@ int main(int argc, char *argv[])
             final_xor ^= multithreaded_xor(no_of_elements, td);
             block_count++;
             size += object.gcount();
+            // if ((end = now()) - start > 15)
+            // {
+            //     flag = 1;
+            //     break;
+            // }
         }
-        if (object.gcount() < block_size && object.gcount() > 0)
+        size = block_count*block_size;
+        if (object.gcount() < block_size && object.gcount() > 0 && flag == 0)
         {
             final_xor ^= multithreaded_xor(object.gcount() / sizeof(unsigned int), td);
             block_count++;
@@ -136,7 +149,7 @@ int main(int argc, char *argv[])
         }
         // cout<<"----"<<object.gcount()<<endl;
         end = now();
-        print_performance(size, start, end, block_count, final_xor);
+        print_performance(size, start, end, block_count, final_xor, flag);
     }
 
     cout << "\n";

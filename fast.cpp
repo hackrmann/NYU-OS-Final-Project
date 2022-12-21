@@ -42,7 +42,7 @@ void *xorbuf(void *arg)
     long tid = args->thread_id;
     long size = args->size;
 
-    unsigned int result = 0;
+    unsigned int result = args->xor_result;
     for (int i = tid; i < size; i += num_threads)
     {
         // if(buf[i]!=0) cout<<buf[i]<<" thread "<<tid<<" "<<i<<endl;
@@ -53,7 +53,7 @@ void *xorbuf(void *arg)
     return NULL;
 }
 
-unsigned int multithreaded_xor(unsigned int no_of_elements, struct thread_data td[])
+void multithreaded_xor(unsigned int no_of_elements, struct thread_data td[])
 {
     unsigned int final_xor = 0;
     for (int i = 0; i < num_threads; i++)
@@ -66,11 +66,6 @@ unsigned int multithreaded_xor(unsigned int no_of_elements, struct thread_data t
     {
         pthread_join(threads[i], NULL);
     }
-    for (int i = 0; i < num_threads; i++)
-    {
-        final_xor = final_xor ^ td[i].xor_result;
-    }
-    return final_xor;
 }
 
 int main(int argc, char *argv[])
@@ -79,6 +74,9 @@ int main(int argc, char *argv[])
     double start, end;
     string file_name = "";
     struct thread_data td[num_threads];
+
+    for (int i = 0; i < num_threads; i++)
+        td[i].xor_result = 0;
 
     if (argc != 2)
         print_error("Check arguments!");
@@ -106,13 +104,14 @@ int main(int argc, char *argv[])
             perror("out of memory for threads!");
 
         while (object.read((char *)buf, size_of_buf))
-        {
-            final_xor ^= multithreaded_xor(no_of_elements, td);
-        }
+            multithreaded_xor(no_of_elements, td);
+
         if (object.gcount() < block_size && object.gcount() > 0)
-        {
-            final_xor ^= multithreaded_xor(object.gcount() / sizeof(unsigned int), td);
-        }
+            multithreaded_xor(object.gcount() / sizeof(unsigned int), td);
+
+        for (int i = 0; i < num_threads; i++)
+            final_xor = final_xor ^ td[i].xor_result;
+            
         end = now();
         cout << "Time taken: " << (end - start) << " seconds" << endl << 
                 "Block size: " << block_size << " bytes" << endl;
