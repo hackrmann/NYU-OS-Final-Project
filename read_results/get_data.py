@@ -47,11 +47,18 @@ for i in experiment:
         x = experiment[i]
         block_sizes = [i["block_size"] for i in x]
         rates = [i["rate"] for i in x]
-        print("block sizes:")
-        for k in block_sizes:
-            print(k)
-        print("rates---")
-        for k in rates:
+        times = [i["time"] for i in x]
+        sizes = [i["size"] for i in x]
+        # print("block sizes:")
+        # for k in block_sizes:
+        #     print(k)
+        # print("rates---")
+        # for k in rates:
+        #     print(k)
+        # print("time---")
+        # for k in times:
+        #     print(k)
+        for k in sizes:
             print(k)
         print("-------------------------")
     except:
